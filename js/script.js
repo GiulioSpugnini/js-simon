@@ -11,16 +11,29 @@ Bonus:
 // #FUNZIONI
 const randomNumber = ((min, max) => Math.floor(Math.random() * (max - min + 1)) + min);
 
-const generateNumber = () => {
+const generateNumbers = () => {
     let numbers = [];
     for (let i = 0; i < 5; i++) {
         numbers.push(randomNumber(1, 100));
     }
     alert('I numeri sono:' + numbers);
-}
-
+};
+//La funzione chiede all'utente di inserire un numero 5 volte
+const userNumber = () => {
+    let userNumbers = [];
+    for (let i = 0; i < 5; i++) {
+        userNumbers.push(prompt('Inserisci i numeri comparsi precedentemente: '));
+    }
+    console.log(userNumbers);
+    return userNumbers;
+};
+//Utilizzo i numeri inseriti dall'utente, nella funzione setTimout()
+const userAnswer = () => userNumber();
 // ??ELEMENTI DA UTILIZZARE
 
 
 // !ESECUZIONE PROGRAMMA
-generateNumber();
+//Genero i numeri casuali
+generateNumbers();
+//Imposto il tempo di attivazione della funzione richiamata
+setTimeout(userAnswer, 30000);
