@@ -12,28 +12,32 @@ Bonus:
 const randomNumber = ((min, max) => Math.floor(Math.random() * (max - min + 1)) + min);
 
 const generateNumbers = () => {
-    let numbers = [];
     for (let i = 0; i < 5; i++) {
         numbers.push(randomNumber(1, 100));
     }
-    alert('I numeri sono:' + numbers);
+    alert('I numeri sono: ' + numbers);
+    return numbers;
 };
-//La funzione chiede all'utente di inserire un numero 5 volte
+//La funzione chiede all'utente di inserire un numero 5 volte, dopodiche inserisco in un nuovo array i numeri corretti
 const userNumber = () => {
-    let userNumbers = [];
+    const correctNumbers = [];
     for (let i = 0; i < 5; i++) {
-        userNumbers.push(prompt('Inserisci i numeri comparsi precedentemente: '));
+        let userNumber = (prompt('Inserisci i numeri comparsi precedentemente: '));
+        if (numbers.includes(userNumber) === true) correctNumbers.push(userNumber);
+        console.log('I numeri corretti sono: ' + correctNumbers);
     }
-    console.log(userNumbers);
-    return userNumbers;
+    if (correctNumbers === '') alert('Non hai indovinato nessun numero!');
 };
 //Utilizzo i numeri inseriti dall'utente, nella funzione setTimout()
 const userAnswer = () => userNumber();
+//Controllo quanti e quali numeri sono stati indovinati dall'utente
+// const isValid = (array) => (array => array.includes(this)) ? true : false;
 // ??ELEMENTI DA UTILIZZARE
-
+let numbers = [];
 
 // !ESECUZIONE PROGRAMMA
 //Genero i numeri casuali
 generateNumbers();
+console.log('I numeri generati casualmente sono: ' + numbers);
 //Imposto il tempo di attivazione della funzione richiamata
-setTimeout(userAnswer, 30000);
+setTimeout(userAnswer, 300);
