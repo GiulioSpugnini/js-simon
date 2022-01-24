@@ -9,9 +9,18 @@ Bonus:
     controllare che l'utente non inserisca 2 volte lo stesso numero
 */
 // #FUNZIONI
-const randomNumber = getRndInteger((min, max) => Math.floor(Math.random() * (max - min + 1)) + min);
+const randomNumber = ((min, max) => Math.floor(Math.random() * (max - min + 1)) + min);
+
+const generateNumber = () => {
+    let numbers = [];
+    for (let i = 0; i < 5; i++) {
+        numbers.push(randomNumber(1, 100));
+    }
+    alert('I numeri sono:' + numbers);
+}
 
 // ??ELEMENTI DA UTILIZZARE
 
 
 // !ESECUZIONE PROGRAMMA
+generateNumber();
