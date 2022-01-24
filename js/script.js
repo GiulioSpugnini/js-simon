@@ -13,8 +13,11 @@ const randomNumber = ((min, max) => Math.floor(Math.random() * (max - min + 1)) 
 
 const numbers = [];
 const generateNumbers = () => {
-    for (let i = 0; i < 5; i++) {
-        numbers.push(randomNumber(1, 100));
+
+    while (numbers.length < 5) {
+        let randomNum = randomNumber(1, 100);
+        numbers.push(randomNum);
+        if (numbers.includes(randomNum)) randomNum = randomNumber(1, 100);
     }
     alert('I numeri sono: ' + numbers);
     return numbers;
@@ -25,10 +28,12 @@ const userNumber = () => {
     const correctNumbers = [];
     for (let i = 0; i < 5; i++) {
         let userNumber = parseInt(prompt('Inserisci i numeri comparsi precedentemente: '));
-        if (numbers.includes(userNumber)) correctNumbers.push(userNumber);
+        if (userNumber)
+            if (numbers.includes(userNumber)) correctNumbers.push(userNumber);
     }
     console.log('I numeri corretti sono: ' + correctNumbers);
     if (correctNumbers.length === 0) alert('Non hai indovinato nessun numero!');
+    else(alert('Questi sono i numeri che hai indovinato: ' + correctNumbers));
 };
 //Utilizzo i numeri inseriti dall'utente, nella funzione setTimout()
 const userAnswer = () => userNumber();
